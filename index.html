@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minimal E-commerce Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #ffffff;
+      color: #222;
+    }
+
+    header {
+      background: #121212;
+      color: #f5f5f5;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      background: #222;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+    }
+
+    nav a:hover {
+      background: #444;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: normal;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-card button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      border: none;
+      background: #121212;
+      color: white;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background: #444;
+    }
+
+    form {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      margin-top: 15px;
+      background: #121212;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    input[type="submit"]:hover {
+      background: #444;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #121212;
+      color: #f5f5f5;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Minimal E-commerce Store</h1>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+  </nav>
+
+  <section id="home">
+    <h2>Welcome to Our Store</h2>
+    <p>Discover quality products with a simple and clean shopping experience.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are committed to offering the best products with top-notch customer service.</p>
+  </section>
+
+  <section id="shop">
+    <h2>Shop Our Products</h2>
+    <div class="product-list">
+      <div class="product-card">
+        <h3>Product 1</h3>
+        <p>Stylish Minimal Watch</p>
+        <button onclick="showBookingForm('Product 1')">Book Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Product 2</h3>
+        <p>Elegant Leather Wallet</p>
+        <button onclick="showBookingForm('Product 2')">Book Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Product 3</h3>
+        <p>Wireless Earbuds</p>
+        <button onclick="showBookingForm('Product 3')">Book Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Product 4</h3>
+        <p>Comfort Sneakers</p>
+        <button onclick="showBookingForm('Product 4')">Book Now</button>
+      </div>
+      <div class="product-card">
+        <h3>Product 5</h3>
+        <p>Modern Backpack</p>
+        <button onclick="showBookingForm('Product 5')">Book Now</button>
+      </div>
+    </div>
+
+    <form id="booking-form" style="display:none;" onsubmit="return submitBooking(event)">
+      <h3 id="booking-title">Booking</h3>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" value="1" required />
+      <input type="submit" value="Submit Booking" />
+    </form>
+
+  </section>
+
+  <footer>
+    <p>© 2025 Minimal E-commerce Store | Hyderabad, Telangana, India</p>
+  </footer>
+
+  <script>
+    function showBookingForm(productName) {
+      document.getElementById('booking-title').innerText = 'Booking: ' + productName;
+      document.getElementById('booking-form').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('booking-form').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    function submitBooking(event) {
+      event.preventDefault();
+      alert('Thank you for your booking! We will contact you soon.');
+      document.getElementById('booking-form').reset();
+      document.getElementById('booking-form').style.display = 'none';
+      return false;
+    }
+  </script>
+</body>
+
+</html>
